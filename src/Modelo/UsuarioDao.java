@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import Conexion.Conexion;
 
@@ -121,6 +122,16 @@ public class UsuarioDao implements Serializable {
 
 		return foto;
 
+	}
+	
+	public String fileName(final Part part) {
+	    for (String content : part.getHeader("content-disposition").split(";")) {
+	        if (content.trim().startsWith("filename")) {
+	            return content.substring(
+	                    content.indexOf('=') + 1).trim().replace("\"", "");
+	        }
+	    }
+	    return null;
 	}
 
 }

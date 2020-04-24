@@ -24,13 +24,9 @@ public class Prueba {
 		
 	
 
-		
-		Conexion con= Conexion.getConexion();
-		 int var =17;
-		 
-		 UsuarioDao uD=new UsuarioDao();
-		
-		 System.out.print(uD.foto("javi@gmail.com"));
+	    String b = "USB\\VID_04F2&PID_B2E1&MI_00\\6&9F7977C&0&1200";
+	    System.out.println(b);
+	    System.out.println(b.replaceAll("\\\\","\\\\\\\\"));
 	    
 
 	  

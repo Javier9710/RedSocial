@@ -28,6 +28,7 @@ import Modelo.UsuarioDao;
 @WebServlet("/UsuarioControl")
 public class UsuarioControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	final String output = "/uploads";
 
 	Usuario u = new Usuario();
 	UsuarioDao uD = new UsuarioDao();
@@ -64,21 +65,16 @@ public class UsuarioControl extends HttpServlet {
 			String apellido = request.getParameter("apellido");
 			String email = request.getParameter("email");
 			String pass = request.getParameter("contra");
-			Part archivo = request.getPart("foto");
-			String context = request.getServletContext().getRealPath("img");
-			String foto = Paths.get(archivo.getSubmittedFileName()).getFileName().toString(); 
-			//archivo.write(context + File.separator + foto);
-			String fotoName =File.separator+ File.separator+foto;
-			//motorista.setFoto(fotoName);
-			System.out.print(fotoName);
-			
-			
+			Part foto1 = request.getPart("foto");
+	        String foto2 = uD.fileName(foto1);
+	        String foto= (foto2.replaceAll("\\\\","\\\\\\\\"));
+
 			u.setUsuario(usuario);
 			u.setNombre(nombre);
 			u.setApellido(apellido);
 			u.setEmail(email);
 			u.setPass(pass);
-			u.setFoto(fotoName);
+			u.setFoto(foto);
 
 		}
 		if (uD.registrar(u)) {
