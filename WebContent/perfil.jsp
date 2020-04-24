@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="Modelo.Usuario"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	HttpSession sesion = request.getSession();
 Usuario u = (Usuario) sesion.getAttribute("usuario");
@@ -47,9 +48,8 @@ String usuario = u.getUsuario();
 
 			<li class="nav-item dropdown"><a class="nav dropdown-toggle"
 				href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false"><img
-					src="C:<%=foto%>" height="60" width="60"
-					style="border-radius: 10pc;"></a>
+				aria-haspopup="true" aria-expanded="false"><img src="<%=foto%>"
+					height="60" width="60" style="border-radius: 10pc;"></a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="perfil.jsp">Perfil</a> <a
 						class="dropdown-item" href="seguidores.jsp">Seguidores</a> <a
@@ -66,7 +66,7 @@ String usuario = u.getUsuario();
 	<div class="container" id="lol">
 		<div class="row align-items-start">
 			<div class="col" align="center">
-				<a href="perfil.jsp"><img src="C:<%=foto%>" id="perfil"
+				<a href="perfil.jsp"><img src="<%=foto%>" id="perfil"
 					height="150" width="150"
 					style="border-radius: 10pc; width: 60%; height: 60%;"></a>
 			</div>
@@ -82,31 +82,56 @@ String usuario = u.getUsuario();
 						<a class="ab" href="seguidos.jsp"> Seguidos: </a>
 					</div>
 				</div>
-				<br> <input type="file" class="form-control-file"
-					id="exampleFormControlFile1"><br>
-
-				<button type="submit" class="btn btn-dark my-3 my-sm-0">Subir
-					foto</button>
+				
+				<form class="form-inline my-4 my-lg-0" action="PublicacionControl"
+					method="post" enctype="multipart/form-data">
+					
+					<br> <input type="file" class="form-control-file" name="foto"
+						id="exampleFormControlFile1"><br>
+						<br>
+					<textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion"
+						rows="2"></textarea>
+					<br>
+					<br>
+					<button class="btn btn-outline-light my-3 my-sm-0" name="accion1"
+					value="publicar" type="submit">Subir Foto</button>
+				</form>
 			</div>
 		</div>
 	</div>
 	<br>
 	<div class="container" id="lol2">
-		<div class="row">
-			<div class="col-sm">
-				<img class="fotos"
-					src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AAecJh0.img?h=416&w=799&m=6&q=60&u=t&o=f&l=f&x=2218&y=1379">
-			</div>
-			<div class="col-sm">
-				<img class="fotos"
-					src="https://www.guioteca.com/los-90/files/2018/10/GOODfellas.jpg">
-			</div>
-			<div class="col-sm">
-				<img class="fotos"
-					src="https://static.wixstatic.com/media/6d43fc_8434a2e4965f4cc1a32319e74f992cf2.jpg/v1/fill/w_630,h_378,al_c,q_80,usm_0.66_1.00_0.01/6d43fc_8434a2e4965f4cc1a32319e74f992cf2.webp">
-			</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="text-align: center" scope="col">Usuario</th>
+					<th style="text-align: center" scope="col">Foto</th>
+					<th style="text-align: center" scope="col">Descripcion</th>
 
-		</div>
+				</tr>
+			</thead>
+			<tbody>
+
+				<c:forEach var="d" items="${lista}">
+
+					<tr>
+						<td style="text-align: center">${d.getUsuario}</td>
+						<td style="text-align: center"><img src="${d.getFoto()}" with="120px" height="120px"></td>
+						<td style="text-align: center">${d.getDescripcion}</td>
+						
+						<td></td>
+
+
+					</tr>
+
+				</c:forEach>
+
+
+
+			</tbody>
+
+		</table>
+
 	</div>
 	<br>
 	<footer class="bg-dark rounded-top text-center">

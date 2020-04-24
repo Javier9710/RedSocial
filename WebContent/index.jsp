@@ -52,17 +52,14 @@
 						<div class="col-sm-12">
 							<button type="submit" id="login" name="accion" value="ingresar"
 								class="btn btn-dark">Iniciar Sesión</button>
-							<br>
-							<br>
+							<br> <br>
 
 							<button type="button" class="btn btn-primary">Conectar
 								con Facebook</button>
-							<br>
-							<br>
+							<br> <br>
 							<button type="button" id=google class="btn btn-warning">Conectar
 								con Google</button>
-							<br>
-							<br>
+							<br> <br>
 							<button type="button" id=twitter class="btn btn-info">Conectar
 								con Twitter</button>
 						</div>

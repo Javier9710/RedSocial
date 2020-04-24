@@ -47,7 +47,7 @@ String usuario = u.getUsuario();
 			<li class="nav-item dropdown"><a class="nav dropdown-toggle"
 				href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"><img
-					src="C:<%=foto%>" height="60" width="60"
+					src="<%=foto%>" height="60" width="60"
 					style="border-radius: 10pc;"></a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="perfil.jsp">Perfil</a> <a
@@ -61,7 +61,7 @@ String usuario = u.getUsuario();
 	<div class="container" id="lol">
 		<div class="row align-items-start">
 			<div class="col" align="center">
-				<a href="perfil.jsp"><img src="C:<%=foto%>" id="perfil"
+				<a href="perfil.jsp"><img src="<%=foto%>" id="perfil"
 					height="150" width="150"
 					style="border-radius: 10pc; width: 60%; height: 60%;"></a>
 			</div>

@@ -7,6 +7,7 @@
 <%
 	HttpSession sesion = request.getSession();
 Usuario u = (Usuario) sesion.getAttribute("usuario");
+System.out.println("prueba:---"+u.getId());
 String foto = u.getFoto();
 %>
 
@@ -38,7 +39,7 @@ String foto = u.getFoto();
 			</div>
 			<form class="form-inline my-4 my-lg-0" action="BuscarControl"
 				method="post">
-				> <input class="form-control mr-sm-4" type="search"
+				 <input class="form-control mr-sm-4" type="search"
 					placeholder="Buscar" aria-label="Search">
 				<button class="btn btn-outline-light my-3 my-sm-0" name="accion"
 					value="listar" type="submit">Buscar</button>
@@ -50,9 +51,8 @@ String foto = u.getFoto();
 
 			<li class="nav-item dropdown"><a class="nav dropdown-toggle"
 				href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false"><img
-					src="C:<%=foto%>" height="60" width="60"
-					style="border-radius: 10pc;"></a>
+				aria-haspopup="true" aria-expanded="false"><img src="<%=foto%>"
+					height="60" width="60" style="border-radius: 10pc;"></a>
 
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="perfil.jsp">Perfil</a> <a

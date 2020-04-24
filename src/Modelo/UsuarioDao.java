@@ -104,25 +104,6 @@ public class UsuarioDao implements Serializable {
 
 	}
 
-	public String foto(String email) {
-		String foto = "";
-
-		String sql = "Select foto from usuario where email='" + email + "'";
-		try {
-			ResultSet rs = con.query(sql);
-			while (rs.next()) {
-				foto = rs.getString(1);
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-
-		}
-
-		return foto;
-
-	}
 	
 	public String fileName(final Part part) {
 	    for (String content : part.getHeader("content-disposition").split(";")) {

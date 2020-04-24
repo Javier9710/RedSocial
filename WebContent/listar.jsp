@@ -43,7 +43,7 @@ String foto = u.getFoto();
 			<li class="nav-item dropdown"><a class="nav dropdown-toggle"
 				href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"><img
-					src="C:<%=foto%>" height="60" width="60"
+					src="<%=foto%>" height="60" width="60"
 					style="border-radius: 10pc;"></a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="perfil.jsp">Perfil</a> <a
@@ -78,7 +78,7 @@ String foto = u.getFoto();
 					<tr>
 						<td style="text-align: center">${d.getId()}</td>
 						<td style="text-align: center">${d.getUsuario()}</td>
-						<td style="text-align: center"><img src="C:${d.getFoto()}"
+						<td style="text-align: center"><img src="${d.getFoto()}"
 							with="120px" height="120px"></td>
 						<td></td>
 

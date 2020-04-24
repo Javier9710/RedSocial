@@ -1,12 +1,7 @@
 package Modelo;
 
-
-
 import java.io.Serializable;
 import java.util.Date;
-
-
-
 
 public class Publicacion implements Serializable {
 
@@ -18,10 +13,10 @@ public class Publicacion implements Serializable {
 	private String descripcion;
 	private int usuario;
 	private Date fechaPublicacion;
-	private int acceso;
-	
+	private String foto;
+
 	public Publicacion() {
-		
+
 	}
 
 	public int getId() {
@@ -56,13 +51,12 @@ public class Publicacion implements Serializable {
 		this.fechaPublicacion = fechaPublicacion;
 	}
 
-	public int getAcceso() {
-		return acceso;
+	public String getFoto() {
+		return foto;
 	}
 
-	public void setAcceso(int acceso) {
-		this.acceso = acceso;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
-	
-	
+
 }
