@@ -112,7 +112,7 @@ String usuario = u.getUsuario();
 			</thead>
 			<tbody>
 
-				<c:forEach var="d" items="${lista}">
+				<c:forEach var="d" items="${lista1}">
 
 					<tr>
 						<td style="text-align: center">${d.getUsuario}</td>
