@@ -53,14 +53,14 @@ public class PublicacionControl extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession sesion = request.getSession();
 		Usuario u = (Usuario) sesion.getAttribute("usuario");
-
-		List<Publicacion> lista1 = pD.listar1(u.getId());
-		request.setAttribute("lista1", lista1);
-		request.getRequestDispatcher("perfil.jsp").forward(request, response);
-
+		System.out.println("1");
+		
 		String accion = request.getParameter("accion1");
 		System.out.println(accion);
 		if (accion.equals("publicar")) {
+			System.out.println("1");
+			List<Publicacion> lista1 = pD.listar1(u.getId());
+			request.setAttribute("lista1", lista1);
 
 			Part foto1 = request.getPart("foto");
 			String foto2 = pD.fileName(foto1);

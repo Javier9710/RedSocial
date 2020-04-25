@@ -2,9 +2,12 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="Modelo.Usuario"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@page import="Conexion.Conexion" %>
 <%
 	HttpSession sesion = request.getSession();
 Usuario u = (Usuario) sesion.getAttribute("usuario");
+int id= u.getId();
 String foto = u.getFoto();
 String nombre = u.getNombre();
 String usuario = u.getUsuario();
@@ -82,24 +85,38 @@ String usuario = u.getUsuario();
 						<a class="ab" href="seguidos.jsp"> Seguidos: </a>
 					</div>
 				</div>
-				
+
 				<form class="form-inline my-4 my-lg-0" action="PublicacionControl"
 					method="post" enctype="multipart/form-data">
-					
+
 					<br> <input type="file" class="form-control-file" name="foto"
-						id="exampleFormControlFile1"><br>
-						<br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion"
-						rows="2"></textarea>
-					<br>
-					<br>
+						id="exampleFormControlFile1"><br> <br>
+					<textarea class="form-control" id="exampleFormControlTextarea1"
+						name="descripcion" rows="2"></textarea>
+					<br> <br>
 					<button class="btn btn-outline-light my-3 my-sm-0" name="accion1"
-					value="publicar" type="submit">Subir Foto</button>
+						value="publicar" type="submit">Subir Foto</button>
 				</form>
 			</div>
 		</div>
 	</div>
 	<br>
+	
+	<%
+	
+	Conexion con = Conexion.getConexion();
+	
+	String sql = "Select u.usuario, p.foto, p.fechapublicacion, p.descripcion "
+			+    "from usuario u, publicacion p "
+			+    "Where p.usuario=u.id "
+			+    "And u.id="+id;
+	
+		ResultSet rs = con.query(sql);
+	
+	%>
+	
+	
+	
 	<div class="container" id="lol2">
 		<table class="table">
 			<thead>
@@ -111,22 +128,23 @@ String usuario = u.getUsuario();
 				</tr>
 			</thead>
 			<tbody>
-
-				<c:forEach var="d" items="${lista1}">
+			<% while(rs.next()){
+				
+				%>
 
 					<tr>
-						<td style="text-align: center">${d.getUsuario}</td>
-						<td style="text-align: center"><img src="${d.getFoto()}" with="120px" height="120px"></td>
-						<td style="text-align: center">${d.getDescripcion}</td>
-						
+						<td style="text-align: center"><%=rs.getString(1)%></td>
+						<td style="text-align: center"><img src="<%=rs.getString(2)%>"
+							with="120px" height="120px"></td>
+						<td style="text-align: center"><%=rs.getString(4)%></td>
+
 						<td></td>
 
 
 					</tr>
+					<%} %>
 
-				</c:forEach>
-
-
+				
 
 			</tbody>
 

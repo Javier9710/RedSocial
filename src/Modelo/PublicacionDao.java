@@ -42,14 +42,14 @@ public class PublicacionDao implements Serializable {
 		System.out.println("1---"+id);
 		List<Publicacion> lista1 = new ArrayList<>();
 
-		String sql = "Select u.usuario, p.foto, p.fechapublicacion, p.descripcion"
-				+    "from usuario u, publicacion p"
-				+    "Where p.usuario=u.id"
-				+    "And u.id='"+id+"'";
+		String sql = "Select u.usuario, p.foto, p.fechapublicacion, p.descripcion "
+				+    "from usuario u, publicacion p "
+				+    "Where p.usuario=u.id "
+				+    "And u.id="+id;
 		System.out.println("estra por--2");
 		try {
 			ResultSet rs = con.query(sql);
-			System.out.println("estra por--");
+			System.out.println("estra por--3");
 			while (rs.next()) {
 				System.out.println("estra por--1");
 				Publicacion p = new Publicacion();
