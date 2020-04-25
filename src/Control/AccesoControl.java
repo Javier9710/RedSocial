@@ -67,7 +67,7 @@ public class AccesoControl extends HttpServlet {
 				response.setHeader("Location", site);
 
 			} else {
-				String site = new String("http://localhost:8080/RedSocial2.0/login.jsp");
+				String site = new String("http://localhost:8080/RedSocial2.0/index.jsp");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location", site);
 			}

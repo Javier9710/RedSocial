@@ -40,7 +40,7 @@ String usuario = u.getUsuario();
 			<form class="form-inline my-4 my-lg-0" action="BuscarControl"
 				method="post">
 				<input class="form-control mr-sm-4" type="search"
-					placeholder="Buscar" aria-label="Search">
+					placeholder="Buscar" name="buscar" aria-label="Search">
 				<button class="btn btn-outline-light my-3 my-sm-0" name="accion"
 					value="listar" type="submit">Buscar</button>
 			</form>

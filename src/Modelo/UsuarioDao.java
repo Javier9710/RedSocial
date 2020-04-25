@@ -79,11 +79,11 @@ public class UsuarioDao implements Serializable {
 
 	}
 
-	public List<Usuario> listar() {
+	public List<Usuario> listar(String consulta) {
 
 		List<Usuario> lista = new ArrayList<>();
 
-		String sql = "Select id,usuario,foto from usuario";
+		String sql = "Select id,usuario,foto from usuario where usuario like '%"+consulta+"%'";
 		try {
 			ResultSet rs = con.query(sql);
 			while (rs.next()) {

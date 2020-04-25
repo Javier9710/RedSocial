@@ -44,10 +44,11 @@ public class BuscarControl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String consulta=request.getParameter("buscar");
 		String accion= request.getParameter("accion");
 		if(accion.equals("listar")) {
 			
-			List<Usuario>lista=uD.listar();
+			List<Usuario>lista=uD.listar(consulta);
 			  request.setAttribute("lista", lista);
 			  request.getRequestDispatcher("listar.jsp").forward(request, response);
 		}

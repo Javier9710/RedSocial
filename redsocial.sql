@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2020 a las 06:13:42
+-- Tiempo de generación: 25-04-2020 a las 19:14:56
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -97,8 +97,11 @@ CREATE TABLE `publicacion` (
 --
 
 INSERT INTO `publicacion` (`id`, `descripcion`, `usuario`, `fechapublicacion`, `foto`) VALUES
-(18, 'holaascac', 333475, '2020-04-24 09:10:13', 'C:\\Users\\acer\\Pictures\\img\\3.jpg'),
-(27, 'github', 333475, '2020-04-25 03:00:29', 'C:\\Users\\acer\\Downloads\\git hub.png');
+(29, 'Les presento mi nueva moto que he conseguido gracias a mi esfuerzo ;)', 1, '2020-04-25 16:56:47', 'C:\\Users\\acer\\Pictures\\img\\UsersacerPicturesNUEVA.jpg'),
+(31, 'Una foto con mis compañeros de club, Yamaha Racing', 333477, '2020-04-25 17:01:32', 'C:\\Users\\acer\\Pictures\\GoPro\\IMG-20200301-WA0009.jpg'),
+(32, 'Primer viaje a pamplona', 333477, '2020-04-25 17:03:00', 'C:\\Users\\acer\\Pictures\\GoPro\\IMG-20200301-WA0050.jpg'),
+(33, 'Meme malo', 1, '2020-04-25 17:05:54', 'C:\\Users\\acer\\Documents\\me-pasas-la-tarea-si-pero-no-la-hagas-igual-17895440.png'),
+(34, 'Circuito de electrónica, mierda de materia', 333478, '2020-04-25 17:14:01', 'C:\\Users\\acer\\Downloads\\circuit-20200419-1711.png');
 
 -- --------------------------------------------------------
 
@@ -124,7 +127,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `usuario`, `email`, `nombre`, `apellido`, `pass`, `fecharegistro`, `fechanacimiento`, `pais`, `foto`) VALUES
-(333475, 'Pachito31', '123@123.com', 'andres', 'moncada', '1234', 'null', 'null', 0, 'C:\\Users\\acer\\Pictures\\NUEVA.jpg');
+(1, 'Javier31', 'javi@gmail.com', 'javier Andres', 'Moncada', '1234', NULL, NULL, NULL, 'C:\\Users\\acer\\Pictures\\img\\1.jpg'),
+(333477, 'CesarK', 'cesar@gamil.com', 'cesar david', 'carvajal', '1234', 'null', 'null', 0, 'C:\\Users\\acer\\Pictures\\img\\4.jpeg'),
+(333478, 'StewarJS', 'js@gmail.com', 'jarbir stewart', 'mejia', '1234', 'null', 'null', 0, 'C:\\Users\\acer\\Pictures\\img\\5.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -208,13 +213,13 @@ ALTER TABLE `mensaje`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Almacena el identificador interno del usuario, es un codigo interno del sistema-', AUTO_INCREMENT=333476;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Almacena el identificador interno del usuario, es un codigo interno del sistema-', AUTO_INCREMENT=333479;
 
 --
 -- Restricciones para tablas volcadas

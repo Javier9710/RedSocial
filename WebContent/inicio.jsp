@@ -3,6 +3,8 @@
 <%@page session="true"%>
 <%@page import="Modelo.Usuario"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@page import="Conexion.Conexion" %>
 
 <%
 	HttpSession sesion = request.getSession();
@@ -40,7 +42,7 @@ String foto = u.getFoto();
 			<form class="form-inline my-4 my-lg-0" action="BuscarControl"
 				method="post">
 				 <input class="form-control mr-sm-4" type="search"
-					placeholder="Buscar" aria-label="Search">
+					placeholder="Buscar" name="buscar" aria-label="Search">
 				<button class="btn btn-outline-light my-3 my-sm-0" name="accion"
 					value="listar" type="submit">Buscar</button>
 			</form>
@@ -67,38 +69,40 @@ String foto = u.getFoto();
 	<br>
 	<br>
 
+	<%
+	
+	Conexion con = Conexion.getConexion();
+	
+	String sql = "Select u.usuario, p.foto, p.fechapublicacion, p.descripcion "
+			+    "from usuario u, publicacion p "
+			+    "Where p.usuario=u.id "
+			+    "ORDER BY p.fechapublicacion DESC";
+	
+		ResultSet rs = con.query(sql);
+	
+	%>
+	
 	<div class="container" id="lol2">
+		
+  <% while(rs.next()){
+        
+        %>
+ 	<div class="row">
+    <div class="col">
+     <h5 style="font-family: 'Istok Web', sans-serif;"><%=rs.getString(1)%></h5>
+      <p style="font-family: 'Rokkitt', serif; font-size: 20px;" ><%=rs.getString(4)%></p>
+      <img src="<%=rs.getString(2)%>" width="200px" height="200px" ">
+    </div>
+    <div class="col">
+      
+      <p style="font-family: 'Raleway', sans-serif;" align="right"><%=rs.getString(3)%></p>
 
-		<div class="row">
-			<div class="col-sm">
-				<img class="fotos"
-					src="https://i.blogs.es/5c3f64/final-seven/1366_2000.jpg">
-			</div>
-			<div class="col-sm">
-				<img class="fotos"
-					src="https://www.guioteca.com/los-90/files/2018/10/GOODfellas.jpg">
-			</div>
-			<div class="col-sm">
-				<img class="fotos"
-					src="https://blog.convoynetwork.com/wp-content/uploads/2019/07/kill-bill-920x691.jpg">
-			</div>
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-sm">
-				<img class="fotos"
-					src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2019/11/blade-runner-2049.jpg">
-			</div>
-			<div class="col-sm">
-				<img class="fotos"
-					src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2019/11/blade-runner-2049.jpg">
-			</div>
-			<div class="col-sm">
-				<img class="fotos"
-					src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2019/11/blade-runner-2049.jpg">
-			</div>
-		</div>
-	</div>
+    </div>
+  </div><br>
+  <%} %>
+</div>
+	
+	
 
 
 	<br>

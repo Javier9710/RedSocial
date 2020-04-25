@@ -43,7 +43,7 @@ String usuario = u.getUsuario();
 			<form class="form-inline my-4 my-lg-0" action="BuscarControl"
 				method="post">
 				<input class="form-control mr-sm-4" type="search"
-					placeholder="Buscar" aria-label="Search">
+					placeholder="Buscar" name="buscar" aria-label="Search">
 				<button class="btn btn-outline-light my-3 my-sm-0" name="accion"
 					value="listar" type="submit">Buscar</button>
 			</form>
@@ -93,8 +93,8 @@ String usuario = u.getUsuario();
 						id="exampleFormControlFile1"><br> <br>
 					<textarea class="form-control" id="exampleFormControlTextarea1"
 						name="descripcion" rows="2"></textarea>
-					<br> <br>
-					<button class="btn btn-outline-light my-3 my-sm-0" name="accion1"
+					<br>
+					<button class="btn btn-dark" style="background-color: #555555;" name="accion1"
 						value="publicar" type="submit">Subir Foto</button>
 				</form>
 			</div>
@@ -109,50 +109,36 @@ String usuario = u.getUsuario();
 	String sql = "Select u.usuario, p.foto, p.fechapublicacion, p.descripcion "
 			+    "from usuario u, publicacion p "
 			+    "Where p.usuario=u.id "
-			+    "And u.id="+id;
+			+    "And u.id='"+id+"'"
+			+    "ORDER BY p.fechapublicacion DESC";
 	
 		ResultSet rs = con.query(sql);
 	
 	%>
 	
-	
-	
+		
 	<div class="container" id="lol2">
-		<table class="table">
-			<thead>
-				<tr>
-					<th style="text-align: center" scope="col">Usuario</th>
-					<th style="text-align: center" scope="col">Foto</th>
-					<th style="text-align: center" scope="col">Fecha</th>
-					<th style="text-align: center" scope="col">Descripcion</th>
+		
+  <% while(rs.next()){
+        
+        %>
+ 	<div class="row">
+    <div class="col">
+     <h5 style="font-family: 'Istok Web', sans-serif;"><%=rs.getString(1)%></h5>
+      <p style="font-family: 'Rokkitt', serif; font-size: 20px;" ><%=rs.getString(4)%></p>
+      <img src="<%=rs.getString(2)%>" width="200px" height="200px" ">
+    </div>
+    <div class="col">
+      
+      <p style="font-family: 'Raleway', sans-serif;" align="right"><%=rs.getString(3)%></p>
 
-				</tr>
-			</thead>
-			<tbody>
-			<% while(rs.next()){
-				
-				%>
-
-					<tr>
-						<td style="text-align: center"><%=rs.getString(1)%></td>
-						<td style="text-align: center"><img src="<%=rs.getString(2)%>"
-							with="120px" height="120px"></td>
-						<td style="text-align: center"><%=rs.getString(3)%></td>
-						<td style="text-align: center"><%=rs.getString(4)%></td>
-
-						<td></td>
-
-
-					</tr>
-					<%} %>
-
-				
-
-			</tbody>
-
-		</table>
-
-	</div>
+    </div>
+  </div><br>
+  <%} %>
+</div>
+	
+	
+	
 	<br>
 	<footer class="bg-dark rounded-top text-center">
 		<div class="container py-1">
