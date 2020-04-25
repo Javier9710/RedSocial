@@ -123,6 +123,7 @@ String usuario = u.getUsuario();
 				<tr>
 					<th style="text-align: center" scope="col">Usuario</th>
 					<th style="text-align: center" scope="col">Foto</th>
+					<th style="text-align: center" scope="col">Fecha</th>
 					<th style="text-align: center" scope="col">Descripcion</th>
 
 				</tr>
@@ -136,6 +137,7 @@ String usuario = u.getUsuario();
 						<td style="text-align: center"><%=rs.getString(1)%></td>
 						<td style="text-align: center"><img src="<%=rs.getString(2)%>"
 							with="120px" height="120px"></td>
+						<td style="text-align: center"><%=rs.getString(3)%></td>
 						<td style="text-align: center"><%=rs.getString(4)%></td>
 
 						<td></td>
